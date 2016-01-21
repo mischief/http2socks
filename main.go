@@ -30,7 +30,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	prxy.ConnectDial = dialer.Dial
+	prxy.Tr = &http.Transport{Dial: dialer.Dial}
 
 	logger.Fatal(http.ListenAndServe(*listenAddr, prxy))
 }
